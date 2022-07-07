@@ -7,23 +7,34 @@ import sys
 """ 
 Solving for seed states in XorShift128+ used in V8
 > https://v8.dev/blog/math-random
+> https://apechkurov.medium.com/v8-deep-dives-random-thoughts-on-math-random-fb155075e9e5
+> https://blog.securityevaluators.com/hacking-the-javascript-lottery-80cc437e3b7f
 
 > Tested on Chrome(102.0.5005.61) or Nodejs(v18.2.0.) 
 """
 
-# Feed sequence
-# args = list(map(float, sys.argv[1:]))
-
 """
 Plug in a handful random number sequences from node/chrome
 > Array.from(Array(5), Math.random)
+
+(Optional) In node, we can specify the seed
+> node --random_seed=1337
 """
-sequence = [0.4583057308921952,
-            0.593733397507312,
-            0.27085109426731035,
-            0.7172937863659832,
-            0.6234473499583262]
-# sequence += args
+sequence = [
+  0.9311600617849973,
+  0.3551442693830502,
+  0.7923158995678377,
+  0.787777942408997,
+  0.376372264303491,
+  # 0.23137147109312428
+]
+
+"""
+Random numbers generated from xorshift128+ is used to fill an internal entropy pool of size 64
+> https://github.com/v8/v8/blob/7a4a6cc6a85650ee91344d0dbd2c53a8fa8dce04/src/numbers/math-random.cc#L35
+
+Numbers are popped out in LIFO(Last-In First-Out) manner, hence the numbers presented from the entropy pool are reveresed.
+"""
 sequence = sequence[::-1]
 
 solver = z3.Solver()
@@ -109,7 +120,7 @@ if solver.check() == z3.sat:
     """
     Extract mantissa
     - Add `1.0` (+ 0x3FF0000000000000) to 52 bits
-    - Get the double and Subtract `1` to obtain the random number between [0, 1]
+    - Get the double and Subtract `1` to obtain the random number between [0, 1)
 
     > https://github.com/v8/v8/blob/a9f802859bc31e57037b7c293ce8008542ca03d8/src/base/utils/random-number-generator.h#L111
 
