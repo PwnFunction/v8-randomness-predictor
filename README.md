@@ -1,5 +1,16 @@
 # v8-randomness-predictor
-Using z3 to predict `Math.random` in v8
+
+Using [z3](https://github.com/Z3Prover/z3) to predict `Math.random` in [v8](https://v8.dev)
+
+## YouTube video
+
+<p>
+  <a href='https://www.youtube.com/watch?v=-h_rj2-HP2E'>
+    <img src="https://user-images.githubusercontent.com/19750782/178938498-371e69b9-1182-427a-86c3-dca3e769e7ef.png" alt="PwnFunction YouTube Video" width="600">
+  </a>
+</p>
+
+Watch the [✨ YouTube Video](https://www.youtube.com/watch?v=-h_rj2-HP2E)
 
 ## Run Instructions
 
@@ -42,8 +53,8 @@ $ python3 main.py
 ```
 
 ## Resources
+- [Learn z3 by solving simple challenges](https://github.com/PwnFunction/learn-z3)
 - [There’s Math.random(), and then there’s Math.random()](https://v8.dev/blog/math-random)
 - [Further scramblings of Marsaglia’s xorshift generators](https://vigna.di.unimi.it/ftp/papers/xorshiftplus.pdf)
-- [Few Z3 Challenges](https://github.com/PwnFunction/learn-z3)
 - [(V8 Deep Dives) Random Thoughts on Math.random()](https://apechkurov.medium.com/v8-deep-dives-random-thoughts-on-math-random-fb155075e9e5)
 - [Hacking the JavaScript Lottery](https://blog.securityevaluators.com/hacking-the-javascript-lottery-80cc437e3b7f)
