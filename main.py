@@ -206,7 +206,6 @@ def main():
                     print(":x:", "Invalid Input!")
                     __import__('sys').exit()
 
-    print(*SEQUENCE)
     # Create a cracker object
     cracker = Cracker(SEQUENCE)
 
