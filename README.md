@@ -33,7 +33,7 @@ Array.from(Array(5), Math.random)
 Next we feed these random numbers into the python script (line 12).
 
 ```py
-sequence = [
+SEQUENCE = [
   0.9311600617849973,
   0.3551442693830502,
   0.7923158995678377,
