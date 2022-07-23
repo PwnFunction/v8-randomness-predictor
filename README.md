@@ -30,10 +30,10 @@ Array.from(Array(5), Math.random)
 // [0.9311600617849973, 0.3551442693830502, 0.7923158995678377, 0.787777942408997, 0.376372264303491]
 ```
 
-Next we feed these random numbers into the python script (line 23).
+Next we feed these random numbers into the python script (line 12).
 
 ```py
-sequence = [
+SEQUENCE = [
   0.9311600617849973,
   0.3551442693830502,
   0.7923158995678377,
@@ -41,15 +41,30 @@ sequence = [
   0.376372264303491,
 ][::-1]
 ```
+or, feeding them to the script with the `-s`/`--seeds` flag
 
+```bash
+$ python3 v8-randomness-breaker.py -s 0.9311600617849973,0.3551442693830502,0.7923158995678377,0.787777942408997,0.376372264303491
+```
 Run the script.
 
 ```sh
 $ python3 main.py
-
-# Outputs
-# {'se_state1': 6942842836049070467, 'se_state0': 4268050313212552111}
-# 0.23137147109312428
+👨‍💻 Break that v8 Math.random()!
+🌱   Using 5 seeds
+👉   0.376372264303491
+👉   0.787777942408997
+👉   0.7923158995678377
+👉   0.3551442693830502
+👉   0.9311600617849973
+🚀   Next Random Number: 0.23137147109312428 
+💾   State Values:
++--------+---------------------+
+| state  |        value        |
++--------+---------------------+
+| state0 | 4268050313212552111 |
+| state1 | 6942842836049070467 |
++--------+---------------------+
 ```
 
 ## Resources
